@@ -13,7 +13,7 @@ struct BarcodeScannerView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Hello, Github")
         }
         .padding()
     }
