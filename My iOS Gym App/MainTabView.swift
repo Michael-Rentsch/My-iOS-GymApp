@@ -13,7 +13,7 @@ struct MainTabView: View {
         
         TabView {
             BarcodeScannerView()
-                .tabItem { Label("Scanner", systemImage: "barcode.viewfinder") }
+                .tabItem { Label("Scanner", systemImage: "qrcode.viewfinder") }
             
             BookingsView()
                 .tabItem { Label("Bookings", systemImage: "calendar.badge.clock") }

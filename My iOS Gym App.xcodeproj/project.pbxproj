@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ADEE7442B1E2AA6000D51BE /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEE7432B1E2AA6000D51BE /* CameraView.swift */; };
 		0AE344D32B1BCDDA0046E57F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE344D22B1BCDDA0046E57F /* MainTabView.swift */; };
 		0AE344D52B1BCE750046E57F /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE344D42B1BCE750046E57F /* BookingsView.swift */; };
 		0AEA1E162B191A9A00FDE69B /* My_iOS_Gym_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA1E152B191A9A00FDE69B /* My_iOS_Gym_AppApp.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ADEE7432B1E2AA6000D51BE /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0AE344D22B1BCDDA0046E57F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		0AE344D42B1BCE750046E57F /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
 		0AEA1E122B191A9A00FDE69B /* My iOS Gym App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My iOS Gym App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				0AEA1E1B2B191A9C00FDE69B /* Preview Content */,
 				0AE344D22B1BCDDA0046E57F /* MainTabView.swift */,
 				0AE344D42B1BCE750046E57F /* BookingsView.swift */,
+				0ADEE7432B1E2AA6000D51BE /* CameraView.swift */,
 			);
 			path = "My iOS Gym App";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				0AE344D52B1BCE750046E57F /* BookingsView.swift in Sources */,
 				0AEA1E182B191A9A00FDE69B /* BarcodeScannerView.swift in Sources */,
 				0AE344D32B1BCDDA0046E57F /* MainTabView.swift in Sources */,
+				0ADEE7442B1E2AA6000D51BE /* CameraView.swift in Sources */,
 				0AEA1E162B191A9A00FDE69B /* My_iOS_Gym_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
