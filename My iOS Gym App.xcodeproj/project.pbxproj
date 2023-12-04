@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AAB0C902B1E63E7006CDD01 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB0C8F2B1E63E7006CDD01 /* Permission.swift */; };
+		0AAB0C922B1E6C15006CDD01 /* QRScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB0C912B1E6C15006CDD01 /* QRScannerDelegate.swift */; };
 		0ADEE7442B1E2AA6000D51BE /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEE7432B1E2AA6000D51BE /* CameraView.swift */; };
 		0AE344D32B1BCDDA0046E57F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE344D22B1BCDDA0046E57F /* MainTabView.swift */; };
 		0AE344D52B1BCE750046E57F /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE344D42B1BCE750046E57F /* BookingsView.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AAB0C8F2B1E63E7006CDD01 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		0AAB0C912B1E6C15006CDD01 /* QRScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerDelegate.swift; sourceTree = "<group>"; };
 		0ADEE7432B1E2AA6000D51BE /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0AE344D22B1BCDDA0046E57F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		0AE344D42B1BCE750046E57F /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AAB0C8D2B1E63B9006CDD01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0AAB0C8E2B1E63C7006CDD01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AAB0C8F2B1E63E7006CDD01 /* Permission.swift */,
+				0AAB0C912B1E6C15006CDD01 /* QRScannerDelegate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0AEA1E092B191A9A00FDE69B = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +120,8 @@
 		0AEA1E142B191A9A00FDE69B /* My iOS Gym App */ = {
 			isa = PBXGroup;
 			children = (
+				0AAB0C8E2B1E63C7006CDD01 /* Model */,
+				0AAB0C8D2B1E63B9006CDD01 /* Views */,
 				0AEA1E152B191A9A00FDE69B /* My_iOS_Gym_AppApp.swift */,
 				0AEA1E172B191A9A00FDE69B /* BarcodeScannerView.swift */,
 				0AEA1E192B191A9C00FDE69B /* Assets.xcassets */,
@@ -268,7 +290,9 @@
 			files = (
 				0AE344D52B1BCE750046E57F /* BookingsView.swift in Sources */,
 				0AEA1E182B191A9A00FDE69B /* BarcodeScannerView.swift in Sources */,
+				0AAB0C902B1E63E7006CDD01 /* Permission.swift in Sources */,
 				0AE344D32B1BCDDA0046E57F /* MainTabView.swift in Sources */,
+				0AAB0C922B1E6C15006CDD01 /* QRScannerDelegate.swift in Sources */,
 				0ADEE7442B1E2AA6000D51BE /* CameraView.swift in Sources */,
 				0AEA1E162B191A9A00FDE69B /* My_iOS_Gym_AppApp.swift in Sources */,
 			);
@@ -437,6 +461,7 @@
 				DEVELOPMENT_TEAM = GXHRGY7SVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed to scan QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -466,6 +491,7 @@
 				DEVELOPMENT_TEAM = GXHRGY7SVL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is needed to scan QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -6,13 +6,29 @@
 //
 
 import SwiftUI
+import AVKit
 
-struct CameraView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct CameraView: UIViewRepresentable {
+    
+    var frameSize: CGSize
+    @Binding var session: AVCaptureSession
+    
+    func makeUIView(context: Context) -> UIView {
+        let view = UIViewType(frame: CGRect(origin: .zero, size: frameSize))
+        view.backgroundColor = .clear
+        
+        let cameraLayer = AVCaptureVideoPreviewLayer(session: session)
+        cameraLayer.frame = .init(origin: .zero, size: frameSize)
+        cameraLayer.videoGravity = .resizeAspectFill
+        cameraLayer.masksToBounds = true
+        view.layer.addSublayer(cameraLayer)
+        
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {
+        print("hi")
     }
 }
 
-#Preview {
-    CameraView()
-}
+

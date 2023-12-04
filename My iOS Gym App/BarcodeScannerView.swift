@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct BarcodeScannerView: View {
-    
+    // QR Code scanner properties
     @State private var isScanning: Bool = false
+    @State private var session: AVCaptureSession = .init()
+    @State private var cameraPermission: Permission = .idle
+    // QR Scanner AV Output
+    @State private var errorMessage: String = ""
+    @State private var qrOutput: AVCaptureMetadataOutput = .init()
+    @State private var showError: Bool = false
+    
+    @Environment(\.openURL) private var openURL
+    
+    
     var body: some View {
         VStack(spacing: 15) {
             Button {
@@ -22,6 +33,8 @@ struct BarcodeScannerView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Text("Place QR code inside the area")
+                .font(.title2)
+                .fontWeight(.semibold)
             
             Text("Scanning will begin automatically")
                 .font(.callout)
@@ -34,6 +47,8 @@ struct BarcodeScannerView: View {
                 let size = $0.size
                 
                 ZStack {
+                    CameraView(frameSize: size, session: $session)
+                    
                     ForEach(0...4, id: \.self) { index in
                         let rotation = Double(index) * 90
                         
@@ -69,6 +84,23 @@ struct BarcodeScannerView: View {
             
         }
         .padding(15)
+        .onAppear(perform: {
+            checkCameraPermission()
+        })
+        .alert(errorMessage, isPresented: $showError) {
+            if cameraPermission == .denied {
+                Button("Settings") {
+                    let settingsString = UIApplication.openSettingsURLString
+                    if let settingsURL = URL(string: settingsString) {
+                        openURL(settingsURL)
+                    }
+                }
+                
+                Button("Cancel", role: .cancel) {
+                    
+                }
+            }
+        }
         
     }
         func activateScannerAnimation() {
@@ -78,7 +110,59 @@ struct BarcodeScannerView: View {
                 isScanning = true
             }
         }
+    
+    func checkCameraPermission()  {
+        Task {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized:
+                cameraPermission = .approved
+                setupCamera()
+            case .notDetermined:
+                
+                if await AVCaptureDevice.requestAccess(for: .video) {
+                    cameraPermission = .approved
+                    setupCamera()
+                } else {
+                    cameraPermission = .denied
+                    presentError("Please provide access to camera for scanning QR codes")
+                }
+                
+            case .denied, .restricted:
+                cameraPermission = .denied
+                presentError("Please provide access to camera for scanning QR codes")
+            default: break
+            }
+        }
+    }
+    
+    func setupCamera() {
+        do {
+            guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInUltraWideCamera], mediaType: .video, position: .back).devices.first else {
+                presentError("UNKNOWN ERROR")
+                return
+            }
+            
+            let input = try AVCaptureDeviceInput(device: device)
+            guard session.canAddInput(input), session.canAddOutput(qrOutput) else {
+                presentError("UNKNOWN ERROR")
+                return
+            }
+            
+            session.beginConfiguration()
+            session.addInput(input)
+            session.addOutput(qrOutput)
+            
+            qrOutput.metadataObjectTypes = [.qr]
+            
+        } catch {
+            presentError(error.localizedDescription)
+        }
+    }
 
+    func presentError(_ message: String) {
+        errorMessage = message
+        showError.toggle()
+    }
     
 }
 
