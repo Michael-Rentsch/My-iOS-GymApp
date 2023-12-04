@@ -20,6 +20,10 @@ struct BarcodeScannerView: View {
     
     @Environment(\.openURL) private var openURL
     
+    @StateObject private var qrDelegate = QRScannerDelegate()
+    
+    @State private var scannedCode: String = ""
+    
     
     var body: some View {
         VStack(spacing: 15) {
@@ -47,7 +51,8 @@ struct BarcodeScannerView: View {
                 let size = $0.size
                 
                 ZStack {
-                    CameraView(frameSize: size, session: $session)
+                    CameraView(frameSize: CGSize(width: size.width, height: size.width), session: $session)
+                        .scaleEffect(0.97)
                     
                     ForEach(0...4, id: \.self) { index in
                         let rotation = Double(index) * 90
@@ -74,7 +79,10 @@ struct BarcodeScannerView: View {
             Spacer(minLength: 15)
             
             Button {
-                
+                if !session.isRunning && cameraPermission == .approved {
+                    reactivateCamera()
+                    activateScannerAnimation()
+                }
             } label: {
                 Image(systemName: "qrcode.viewfinder")
                     .font(.largeTitle)
@@ -102,6 +110,21 @@ struct BarcodeScannerView: View {
             }
         }
         
+        .onChange(of: qrDelegate.scannedCode, initial: true) { oldValue,newValue in
+            if let code = newValue {
+                scannedCode = code
+                session.stopRunning()
+                DeActivateScannerAnimation()
+                qrDelegate.scannedCode = nil
+            }
+        }
+        
+    }
+    
+    func reactivateCamera()  {
+        DispatchQueue.global(qos: .background).async {
+            session.startRunning()
+        }
     }
         func activateScannerAnimation() {
             
@@ -111,12 +134,25 @@ struct BarcodeScannerView: View {
             }
         }
     
+    func DeActivateScannerAnimation() {
+        
+        //responsible for animation
+        withAnimation(.easeInOut(duration: 0.85)) {
+            isScanning = false
+        }
+    }
+    
     func checkCameraPermission()  {
         Task {
             switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
                 cameraPermission = .approved
-                setupCamera()
+                if session.inputs.isEmpty {
+                    setupCamera()
+                } else {
+                    session.startRunning()
+                }
+                
             case .notDetermined:
                 
                 if await AVCaptureDevice.requestAccess(for: .video) {
@@ -137,7 +173,7 @@ struct BarcodeScannerView: View {
     
     func setupCamera() {
         do {
-            guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInUltraWideCamera], mediaType: .video, position: .back).devices.first else {
+            guard let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first else {
                 presentError("UNKNOWN ERROR")
                 return
             }
@@ -153,6 +189,12 @@ struct BarcodeScannerView: View {
             session.addOutput(qrOutput)
             
             qrOutput.metadataObjectTypes = [.qr]
+            qrOutput.setMetadataObjectsDelegate(qrDelegate, queue: .main)
+            session.commitConfiguration()
+            DispatchQueue.global(qos: .background).async {
+                session.startRunning()
+            }
+            activateScannerAnimation()
             
         } catch {
             presentError(error.localizedDescription)

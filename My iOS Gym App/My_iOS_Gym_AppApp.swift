@@ -11,7 +11,7 @@ import SwiftUI
 struct My_iOS_Gym_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            BarcodeScannerView()
+            MainTabView()
         }
     }
 }
