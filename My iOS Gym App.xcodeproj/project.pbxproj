@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0AAB0C902B1E63E7006CDD01 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB0C8F2B1E63E7006CDD01 /* Permission.swift */; };
 		0AAB0C922B1E6C15006CDD01 /* QRScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB0C912B1E6C15006CDD01 /* QRScannerDelegate.swift */; };
+		0AB43DE52B1FE10E0026190F /* TrainerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB43DE42B1FE10E0026190F /* TrainerModel.swift */; };
 		0ADEE7442B1E2AA6000D51BE /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEE7432B1E2AA6000D51BE /* CameraView.swift */; };
 		0AE344D32B1BCDDA0046E57F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE344D22B1BCDDA0046E57F /* MainTabView.swift */; };
 		0AE344D52B1BCE750046E57F /* BookingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE344D42B1BCE750046E57F /* BookingsView.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		0AAB0C8F2B1E63E7006CDD01 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
 		0AAB0C912B1E6C15006CDD01 /* QRScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerDelegate.swift; sourceTree = "<group>"; };
+		0AB43DE42B1FE10E0026190F /* TrainerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerModel.swift; sourceTree = "<group>"; };
 		0ADEE7432B1E2AA6000D51BE /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0AE344D22B1BCDDA0046E57F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		0AE344D42B1BCE750046E57F /* BookingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				0AAB0C8F2B1E63E7006CDD01 /* Permission.swift */,
 				0AAB0C912B1E6C15006CDD01 /* QRScannerDelegate.swift */,
+				0AB43DE42B1FE10E0026190F /* TrainerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				0AE344D52B1BCE750046E57F /* BookingsView.swift in Sources */,
 				0AEA1E182B191A9A00FDE69B /* BarcodeScannerView.swift in Sources */,
 				0AAB0C902B1E63E7006CDD01 /* Permission.swift in Sources */,
+				0AB43DE52B1FE10E0026190F /* TrainerModel.swift in Sources */,
 				0AE344D32B1BCDDA0046E57F /* MainTabView.swift in Sources */,
 				0AAB0C922B1E6C15006CDD01 /* QRScannerDelegate.swift in Sources */,
 				0ADEE7442B1E2AA6000D51BE /* CameraView.swift in Sources */,

@@ -9,10 +9,37 @@ import SwiftUI
 
 struct BookingsView: View {
     var body: some View {
-        Text("Bookings")
+        
+        NavigationStack {
+            
+            List {
+                ForEach(trainerModeldata) { trainer in
+                    BookingsCell(trainer: trainer)
+                }
+            }
+            .navigationTitle("Bookings")
+        }
     }
 }
 
 #Preview {
     BookingsView()
+}
+
+
+struct BookingsCell: View {
+    
+    var trainer: TrainerModel
+    
+    var body: some View {
+        HStack {
+            Text(trainer.title + " -")
+               
+            Text(trainer.name)
+                
+            Spacer()
+            Image(systemName: trainer.emote)
+                
+        }
+    }
 }
