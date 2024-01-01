@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BookingsView: View {
+    
+    @State private var isShowingSheet = false
+    
     var body: some View {
         
         NavigationStack {
@@ -15,11 +18,25 @@ struct BookingsView: View {
             List {
                 ForEach(trainerModeldata) { trainer in
                     BookingsCell(trainer: trainer)
+                        .onTapGesture {
+                            isShowingSheet.toggle()
+                        }
                 }
+                
             }
             .navigationTitle("Bookings")
+            .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
+                VStack {
+                    Text("Do a booking!")
+                }
+            }
         }
     }
+}
+
+
+func didDismiss() {
+    print("Chicken")
 }
 
 #Preview {
@@ -38,8 +55,9 @@ struct BookingsCell: View {
             Text(trainer.name)
                 
             Spacer()
-            Image(systemName: trainer.emote)
+            Image(systemName: trainer.emote)   
                 
         }
     }
 }
+
