@@ -10,6 +10,7 @@ import SwiftUI
 struct BookingsView: View {
     
     @State private var isShowingSheet = false
+    @State private var date = Date()
     
     var body: some View {
         
@@ -27,9 +28,19 @@ struct BookingsView: View {
             .navigationTitle("Bookings")
             .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
                 VStack {
-                    Text("Do a booking!")
+                    Text("Personal Trainer")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.top)
+                    
+                    Text("Trainer name")
+                        .font(.title2)
+                        .padding()
+                    
+                         
                 }
             }
+            
         }
     }
 }
