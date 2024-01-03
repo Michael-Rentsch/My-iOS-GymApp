@@ -37,6 +37,13 @@ struct BookingsView: View {
                         .font(.title2)
                         .padding()
                     
+                    Button{
+                        
+                    } label: {
+                        
+                        Text("Pick Date")
+                        Image(systemName: "calendar")
+                    }
                          
                 }
             }
