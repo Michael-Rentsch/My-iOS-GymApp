@@ -10,8 +10,8 @@ import SwiftUI
 struct BookingsView: View {
     
     @State private var isShowingSheet = false
-    @State private var date = Date()
-    
+    @State private var date = Date.now
+    @State private var time = Date.now
     var body: some View {
         
         NavigationStack {
@@ -36,14 +36,14 @@ struct BookingsView: View {
                     Text("Trainer name")
                         .font(.title2)
                         .padding()
+                                    
+                    DatePicker(selection: $date, displayedComponents: .date) {
+                                    Text("Select a date")
+                                }
                     
-                    Button{
-                        
-                    } label: {
-                        
-                        Text("Pick Date")
-                        Image(systemName: "calendar")
-                    }
+                    DatePicker(selection: $time, displayedComponents: .hourAndMinute) {
+                                    Text("Select a Time")
+                                }
                          
                 }
             }
