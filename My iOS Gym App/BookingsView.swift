@@ -12,7 +12,6 @@ struct BookingsView: View {
     @State private var isShowingSheet = false
     @State private var date = Date.now
     @State private var time = Date.now
-    
     @State private var activity = "Personal Trainer"
     @State private var trainerName  = "Trainer name"
     
@@ -24,10 +23,10 @@ struct BookingsView: View {
                 ForEach(trainerModeldata) { trainer in
                     BookingsCell(trainer: trainer)
                         .onTapGesture {
-                            isShowingSheet.toggle()
                             activity = trainer.title
                             trainerName = trainer.name
-                            
+                            isShowingSheet.toggle()
+   
                         }
                 }
                 
@@ -63,17 +62,31 @@ struct BookingsView: View {
                     DatePicker(selection: $date, displayedComponents: .date) {
                                     Text("Select a date")
                                 }
+                    .datePickerStyle(.graphical)
                     .padding()
                     
                     DatePicker(selection: $time, displayedComponents: .hourAndMinute) {
                                     Text("Select a Time")
+                            .fontWeight(.semibold)
                                 }
+
                     .padding()
+                    
+                    Button {
+                        isShowingSheet = false
+                    } label: {
+                        Text("Make Booking")
+                            .frame(width: 180, height: 30)
+                        
+                    }
+                    .padding()
+                    .buttonStyle(.borderedProminent)
                    Spacer()
                 }
-                .padding(.top)
+                
+                //
+                
             }
-            
         }
     }
 }
