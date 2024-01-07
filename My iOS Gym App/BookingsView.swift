@@ -63,7 +63,7 @@ struct BookingsView: View {
                                     Text("Select a date")
                                 }
                     .datePickerStyle(.graphical)
-                    .padding()
+                    //.padding()
                     
                     DatePicker(selection: $time, displayedComponents: .hourAndMinute) {
                                     Text("Select a Time")
